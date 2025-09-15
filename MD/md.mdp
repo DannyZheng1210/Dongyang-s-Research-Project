@@ -1,42 +1,34 @@
-integrator = md  ;md用这个，em用steep
-;输出的设置
-nsteps = 500000    ;总共输出多少步
-dt = 0.002   ;每一步长的时间（2fs)
-nstxout = 5000   ;生成的轨迹的坐标频率
-nstvout = 5000   ;生成速度的频率
-nstenergy = 5000  ;生成能量的频率
-nstlog = 1000  ;控制写 日志文件 (md.log) 的频率(步数（steps）)
+integrator = md       ; use md for MD, steep for EM
+; Output settings
+nsteps = 500000       ; total number of steps
+dt = 0.002            ; timestep (2 fs)
+nstxout = 5000        ; frequency to write coordinates to trajectory
+nstvout = 5000        ; frequency to write velocities
+nstenergy = 5000      ; frequency to write energies
+nstlog = 1000         ; frequency to write log file (md.log)
 
-nstlist = 20  ;每20steps 更新一次邻居表
-nstcomm = 100  ;也可以关掉
-pbc = xyz  ;在每个方向上使用周期性边界条件。
+nstlist = 20          ; update neighbor list every 20 steps
+nstcomm = 100         ; center of mass motion removal (can be turned off)
+pbc = xyz             ; periodic boundary conditions in all directions
 rlist = 1.0
-coulombtype = PME  ;静电设置的参数
+coulombtype = PME     ; electrostatics method
 pme_order = 4
 fourierspacing = 0.12
 
-
- 
-Tcoupl = v-rescale  
+; Temperature coupling
+Tcoupl = v-rescale
 tc-grps = System
 tau_t = 0.1
-ref_t = 300  ;温度
-DispCorr = EnerPres
-;压力的参数
-Pcoupl = C-rescale  ;生产阶段建议用 Parrinello–Rahman
+ref_t = 300           ; reference temperature (K)
+DispCorr = EnerPres   ; dispersion correction
+
+; Pressure coupling parameters
+Pcoupl = C-rescale    ; for production runs better use Parrinello鈥揜ahman
 Pcoupltype = Isotropic
 tau_p = 2.0
 compressibility = 4.5e-5
 ref_p = 1.0
+
 gen_vel = no
-constraints = h-bonds  ;能量最小化的时候用none
-constraint_algorithm = lincs  ;默认的constrain算法
-lincs_iter = 1
-lincs_order = 4
-
-continuation = yes  ;中断也可以继续运行
-
-cutoff-scheme   = Verlet
-rcoulomb = 1.0
-rvdw = 1.0 
-vdwtype = Cut-off  ;范德华类型
+constraints = h-bonds           ; use none for energy minimization
+constraint_algorithm = lincs    ; defaul_
