@@ -1,0 +1,22 @@
+comment : geom optimisation
+continuation : default
+#task : geometryoptimisation
+#task : energy
+task : magres
+magres_task : NMR
+xc_functional : PBE
+fix_occupancy : true
+opt_strategy : speed
+cut_off_energy  = 800 eV
+calculate_stress : true
+max_scf_cycles : 50
+geom_max_iter : 100
+geom_energy_tol : 0.00001 eV
+geom_force_tol : 0.03
+geom_disp_tol : 0.001
+geom_stress_tol : 0.05
+elec_energy_tol : 0.000000001 eV
+geom_modulus_est : 150 gpa
+relativistic_treatment: ZORA
+write_cif_structure : true
+write_cell_structure : true
