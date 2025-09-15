@@ -1,0 +1,16 @@
+; Created by Sobtop (http://sobereva.com/soft/sobtop) Version 1.0(dev4) on 2025-08-21
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ    fudgeQQ
+     1              2              yes            0.5       0.8333
+
+#include "POLY.itp"
+#include "API.itp"
+
+[ system ]
+20ASD
+
+[ molecules ]
+; Molecule      nmols
+POLY       1
+API	   1
